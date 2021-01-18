@@ -13,17 +13,18 @@ std::string infix2postfix(std::string infix) {
             {'+', 3},
             {'-', 3},
             {'*', 4},
-            {'/', 4},};
+            {'/', 4}
+    };
     for (char iter : infix) {
         if (iter == ' ') {
             continue;
         }
-        if (('0' <= iter and iter <= '9') or iter == '.') {
+        if (('0' <= iter && iter <= '9') || iter == '.') {
             postfix += iter;
             continue;
         }
         char last = postfix[postfix.length() - 1];
-        if ('0' <= last and last <= '9')
+        if ('0' <= last && last <= '9')
             postfix += ' ';
         if (iter == ')') {
             while (!op.isEmpty() && op.get() != '(') {
@@ -40,7 +41,7 @@ std::string infix2postfix(std::string infix) {
             continue;
         } else {
             bool f = status.find(iter)->second > status.find(op.get())->second;
-            if (iter == '(' or f) {
+            if (iter == '(' || f) {
                 op.push(iter);
                 continue;
             }
@@ -53,7 +54,7 @@ std::string infix2postfix(std::string infix) {
         op.push(iter);
     }
     char last = postfix[postfix.length() - 1];
-    if ('0' <= last and last <= '9')
+    if ('0' <= last && last <= '9')
         postfix += ' ';
     while (!op.isEmpty()) {
         postfix += op.pop();
